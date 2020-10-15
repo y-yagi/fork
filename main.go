@@ -28,7 +28,7 @@ func main() {
 
 	fmt.Printf("%s\n", green("clone repository"))
 	dir := filepath.Join(root, repo[0])
-	if err := os.MkdirAll(dir, 0700); err != nil {
+	if err := os.MkdirAll(dir, 0755); err != nil {
 		fmt.Fprintf(os.Stderr, "cannot create directory: %v\n", err)
 		return
 	}
