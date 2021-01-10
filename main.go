@@ -62,5 +62,13 @@ func main() {
 		return
 	}
 
+	cmd = exec.Command("git", "fetch", "upstream")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		fmt.Fprintf(os.Stderr, "cannot fetch upstream: %v\n", err)
+		return
+	}
+
 	fmt.Printf("%s\n", green("complete"))
 }
