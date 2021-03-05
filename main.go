@@ -46,8 +46,6 @@ func main() {
 		return
 	}
 
-	path := filepath.Join(dir, repo[1])
-	fmt.Printf("cloned to %s\n", path)
 	fmt.Printf("%s\n", green("add remote"))
 	if err := os.Chdir(repo[1]); err != nil {
 		fmt.Fprintf(os.Stderr, "cannot change directory: %v\n", err)
@@ -70,5 +68,7 @@ func main() {
 		return
 	}
 
-	fmt.Printf("%s\n", green("complete"))
+	path := filepath.Join(dir, repo[1])
+	msg := fmt.Sprintf("complete. cloned to %s.", path)
+	fmt.Printf("%s\n", green(msg))
 }
