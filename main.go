@@ -38,7 +38,7 @@ func main() {
 		return
 	}
 
-	cmd := exec.Command("git", "clone", fmt.Sprintf("git@github.com:%s/%s.git", user, repo[1]))
+	cmd := exec.Command("git", "clone", fmt.Sprintf("git@github.com:%s/%s.git", user, repo[1]), "--recursive")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
