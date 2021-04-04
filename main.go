@@ -69,6 +69,6 @@ func main() {
 	}
 
 	path := filepath.Join(dir, repo[1])
-	msg := fmt.Sprintf("complete. cloned to %s.", path)
+	msg := fmt.Sprintf("complete. cloned to %s", path)
 	fmt.Printf("%s\n", green(msg))
 }
