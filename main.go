@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/y-yagi/color"
+	"github.com/fatih/color"
 )
 
 func main() {
