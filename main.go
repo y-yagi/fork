@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"os/user"
 	"path/filepath"
 	"strings"
 
@@ -11,8 +12,14 @@ import (
 )
 
 func main() {
-	root := "/home/y-yagi/src/github.com/"
-	user := "y-yagi"
+	u, err := user.Current()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "can not user %v\n", err)
+		return
+	}
+
+	user := u.Username
+	root := "/home/" + user + "/src/github.com/"
 	green := color.New(color.FgGreen, color.Bold).SprintFunc()
 
 	if len(os.Args) != 2 {

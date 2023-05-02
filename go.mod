@@ -7,3 +7,5 @@ require (
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	golang.org/x/sys v0.0.0-20210915083310-ed5796bab164 // indirect
 )
+
+require github.com/mattn/go-colorable v0.1.8 // indirect
