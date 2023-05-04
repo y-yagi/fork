@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"os/user"
 	"path/filepath"
 	"strings"
 
@@ -12,14 +11,14 @@ import (
 )
 
 func main() {
-	u, err := user.Current()
+	dirname, err := os.UserHomeDir()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "can not user %v\n", err)
+		fmt.Fprintf(os.Stderr, "can not get home dir%v\n", err)
 		return
 	}
 
-	user := u.Username
-	root := "/home/" + user + "/src/github.com/"
+	githubUser := "y-yagi"
+	root := filepath.Join(dirname, "src", "github.com")
 	green := color.New(color.FgGreen, color.Bold).SprintFunc()
 
 	if len(os.Args) != 2 {
@@ -45,7 +44,7 @@ func main() {
 		return
 	}
 
-	cmd := exec.Command("git", "clone", fmt.Sprintf("git@github.com:%s/%s.git", user, repo[1]), "--recursive")
+	cmd := exec.Command("git", "clone", fmt.Sprintf("git@github.com:%s/%s.git", githubUser, repo[1]), "--recursive")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
